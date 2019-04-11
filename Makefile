@@ -61,7 +61,6 @@
 # Variables
 
 #CC=gcc
-CC=gcc
 
 #For Ubuntu 18.04 or later we must add -no-pie option for gcc if supported
 RET_NO_PIE_CHECK := $(shell $(CC) -no-pie 2>&1 | grep no-pie | wc -w)
@@ -74,9 +73,8 @@ OPTIONS_COMPILE_DEBUG=-D_DEBUG -DDEBUG -DUNIX -DUNIX_LINUX -DCPU_64 -D_REENTRANT
 
 OPTIONS_LINK_DEBUG=-g -fsigned-char -m64 -lm -ldl -lrt -lpthread -lssl -lcrypto -lreadline -lncurses -lz
 
-#OPTIONS_COMPILE_RELEASE=-DNDEBUG -DVPN_SPEED -DUNIX -DUNIX_LINUX -DCPU_64 -D_REENTRANT -DREENTRANT -D_THREAD_SAFE -D_THREADSAFE -DTHREAD_SAFE -DTHREADSAFE -D_FILE_OFFSET_BITS=64 -I./src/ -I./src/Cedar/ -I./src/Mayaqua/ -O2 -fsigned-char -m64
-OPTIONS_COMPILE_RELEASE=$(NO_PIE_OPTION) -O2 -fsigned-char -lm -ldl -lrt -Wl,--no-warn-mismatch -lpthread -L./ lib/libssl.a lib/libcrypto.a lib/libiconv.a lib/libcharset.a lib/libedit.a lib/libncurses.a lib/libz.a
-OPTIONS_LINK_RELEASE=-O2 -fsigned-char -m64 -lm -ldl -lrt -lpthread -lssl -lcrypto -lreadline -lncurses -lz
+OPTIONS_COMPILE_RELEASE=-DNDEBUG -DVPN_SPEED -DUNIX -DUNIX_LINUX -DCPU_64 -D_REENTRANT -DREENTRANT -D_THREAD_SAFE -D_THREADSAFE -DTHREAD_SAFE -DTHREADSAFE -D_FILE_OFFSET_BITS=64 -I./src/ -I./src/Cedar/ -I./src/Mayaqua/ -O2 -fsigned-char -m64
+
 
 INSTALL_BINDIR=/usr/bin/
 INSTALL_VPNSERVER_DIR=/usr/vpnserver/
